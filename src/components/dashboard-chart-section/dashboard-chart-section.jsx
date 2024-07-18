@@ -10,6 +10,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { Box, Stack } from '@mui/material';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -31,7 +33,7 @@ const DashboardChartSection = () => {
       },
       title: {
         display: true,
-        text: 'Number of users',
+        text: 'Number of Vistors',
       },
     },
   };
@@ -48,13 +50,20 @@ const DashboardChartSection = () => {
     labels: dataOfMonths.map(({ month }) => month),
     datasets: [
       {
-        label: 'Users',
+        label: 'Visitors',
         data: dataOfMonths.map(({ numberOfUsers }) => numberOfUsers),
         borderColor: theme.palette.primary.main,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
   };
-  return <Line options={options} data={data} />;
+  return (
+    <Stack
+      component='section'
+      sx={{ marginTop: '25px', position: 'relative', width: '99%' }}
+    >
+      <Line options={options} data={data} responsive='true' />
+    </Stack>
+  );
 };
 export default DashboardChartSection;

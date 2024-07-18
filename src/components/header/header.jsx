@@ -13,10 +13,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+
 import { useTheme } from '@mui/material';
 import { themeChangeContext } from '@/theme-store/theme-store';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import Brightness2OutlinedIcon from '@mui/icons-material/Brightness2Outlined';
 const pages = ['Blog'];
 const settings = ['Profile', 'Logout'];
 
@@ -43,7 +44,7 @@ function Header() {
   };
 
   return (
-    <AppBar position='static'>
+    <AppBar position='fixed'>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           <Typography
@@ -148,9 +149,9 @@ function Header() {
               color='inherit'
             >
               {theme.palette.mode === 'dark' ? (
-                <Brightness7Icon />
+                <WbSunnyOutlinedIcon />
               ) : (
-                <Brightness4Icon />
+                <Brightness2OutlinedIcon />
               )}
             </IconButton>
             <Tooltip title='Open settings'>

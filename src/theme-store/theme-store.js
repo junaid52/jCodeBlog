@@ -36,7 +36,7 @@ const getDesignTokens = (mode) => ({
           },
 
           text: {
-            primary: grey[900],
+            primary: grey[700],
             secondary: grey[800],
           },
         }
