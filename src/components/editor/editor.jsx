@@ -16,7 +16,7 @@ const Editor = () => {
         theme: 'snow',
       });
     }
-    const quill = editorRef.current;
+    // const quill = editorRef.current;
   }, [editorRef]);
 
   return (

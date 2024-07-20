@@ -1,8 +1,12 @@
-import Editor from '@/components/editor/editor';
+import dynamic from 'next/dynamic';
+
 import { FormControl } from '@mui/material';
 import CustomizedTextField from '@/components/customized-text-field/customized-text-field';
 import { Button, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+const Editor = dynamic(() => import('@/components/editor/editor'), {
+  ssr: false,
+});
 export default function Page() {
   return (
     <>
