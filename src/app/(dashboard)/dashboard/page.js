@@ -6,7 +6,7 @@ import RecentPosts from '@/components/recent-posts/recent-posts';
 
 export default function Dashboard() {
   return (
-    <Box sx={{ padding: '20px', flexGrow: '1' }}>
+    <Box>
       <DashboardCardsSection />
       <DashboardChartSection />
       <RecentPosts />

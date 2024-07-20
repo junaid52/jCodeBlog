@@ -12,6 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import NextLink from 'next/link';
 const RecentPosts = () => {
   let posts = [];
   for (let i = 1; i < 5; i++) {
@@ -55,8 +56,13 @@ const RecentPosts = () => {
         <Typography component='h5' variant='h5' sx={{ color: 'inherit' }}>
           Recent Posts
         </Typography>
-        <Button variant='outlined' startIcon={<AddIcon />}>
-          Add Post
+        <Button
+          href='/dashboard/create-post'
+          variant='contained'
+          component={NextLink}
+          startIcon={<AddIcon />}
+        >
+          Create Post
         </Button>
       </Stack>
       {posts}

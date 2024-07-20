@@ -7,7 +7,7 @@ export default function Layout({ children }) {
       <Header />
       <Box sx={{ display: 'flex', paddingTop: '64px' }}>
         <Sidebar />
-        {children}
+        <Box sx={{ padding: '20px', flexGrow: '1' }}>{children}</Box>
       </Box>
     </>
   );
