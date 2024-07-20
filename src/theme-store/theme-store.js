@@ -61,7 +61,7 @@ const ThemeChangeProvider = ({ children }) => {
     []
   );
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-  console.log(theme);
+
   return (
     <themeChangeContext.Provider value={themeStore}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
