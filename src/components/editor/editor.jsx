@@ -1,23 +1,30 @@
 'use client';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, forwardRef, useState } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import { Box } from '@mui/material';
-const Editor = () => {
+const Editor = forwardRef((props, ref) => {
   const containerRef = useRef(null);
-  const editorRef = useRef(null);
+
   useEffect(() => {
-    if (editorRef.current === null) {
-      const container = containerRef.current;
+    let container;
+
+    if (ref.current === null) {
+      container = containerRef.current;
       const editorContainer = container.appendChild(
         container.ownerDocument.createElement('div')
       );
-      editorRef.current = new Quill(editorContainer, {
+      ref.current = new Quill(editorContainer, {
         theme: 'snow',
       });
     }
-    // const quill = editorRef.current;
-  }, [editorRef]);
+
+    const quill = ref.current;
+    // return () => {
+    //   ref.current = null;
+    //   container.innerHtml = '';
+    // };
+  }, [ref]);
 
   return (
     <Box
@@ -39,5 +46,5 @@ const Editor = () => {
       }}
     ></Box>
   );
-};
+});
 export default Editor;
