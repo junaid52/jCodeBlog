@@ -40,14 +40,7 @@ export default function Page() {
       createNewPost(JSON.stringify(values));
     },
   });
-  // useEffect(() => {
-  //   if (window) {
-  //     console.log(window);
-  //     setShowEditor(true);
-  //   }
-  // }, []);
-  // console.log(Editor);
-  // console.log(showEditor);
+
   return (
     <>
       <form id='post-form' onSubmit={formik.handleSubmit}>

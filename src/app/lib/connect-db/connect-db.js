@@ -34,8 +34,6 @@ async function dbConnect() {
     cached.promise = null;
     throw new Error('Network Error');
   }
-  // console.log(cached.conn, 'connection');
-  // return cached.conn;
 }
 
 export default dbConnect;
