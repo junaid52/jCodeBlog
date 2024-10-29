@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, forwardRef } from 'react';
 import dynamic from 'next/dynamic';
 import { FormControl } from '@mui/material';
 import CustomizedTextField from '@/components/customized-text-field/customized-text-field';
@@ -9,10 +9,11 @@ import FilePicker from '@/components/file-picker/file-picker';
 import { createNewPost } from '@/app/lib/actions/actions';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Editor from '@/components/editor/editor';
-// const Editor = dynamic(import('@/components/editor/editor'), {
-//   ssr: false,
-// });
+// import Editor from '@/components/editor/editor';
+const Editor = dynamic(() => import('@/components/editor/editor'), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export default function Page() {
   const [showEditor, setShowEditor] = useState(false);
@@ -39,12 +40,14 @@ export default function Page() {
       createNewPost(JSON.stringify(values));
     },
   });
-  useEffect(() => {
-    if (window) {
-      setShowEditor(true);
-    }
-  }, []);
-
+  // useEffect(() => {
+  //   if (window) {
+  //     console.log(window);
+  //     setShowEditor(true);
+  //   }
+  // }, []);
+  // console.log(Editor);
+  // console.log(showEditor);
   return (
     <>
       <form id='post-form' onSubmit={formik.handleSubmit}>
@@ -106,7 +109,7 @@ export default function Page() {
               ) : null}
             </FormControl>
 
-            {showEditor && <Editor ref={editorRef} />}
+            <Editor innerRef={editorRef} />
           </Box>
           <Box flexBasis='250px'>
             <FilePicker formik={formik} />

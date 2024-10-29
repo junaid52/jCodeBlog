@@ -3,28 +3,24 @@ import { useRef, useEffect, forwardRef, useState } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import { Box } from '@mui/material';
-const Editor = forwardRef((props, ref) => {
+const Editor = ({ innerRef }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     let container;
 
-    if (ref.current === null) {
+    if (innerRef.current === null) {
       container = containerRef.current;
       const editorContainer = container.appendChild(
         container.ownerDocument.createElement('div')
       );
-      ref.current = new Quill(editorContainer, {
+      innerRef.current = new Quill(editorContainer, {
         theme: 'snow',
       });
     }
 
-    const quill = ref.current;
-    // return () => {
-    //   ref.current = null;
-    //   container.innerHtml = '';
-    // };
-  }, [ref]);
+    const quill = innerRef.current;
+  }, [innerRef]);
 
   return (
     <Box
@@ -46,5 +42,5 @@ const Editor = forwardRef((props, ref) => {
       }}
     ></Box>
   );
-});
+};
 export default Editor;
