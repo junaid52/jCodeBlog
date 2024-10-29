@@ -24,7 +24,6 @@ async function dbConnect() {
       // dbName: 'jCodeBlog',
     };
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      console.log('Connection successfull');
       return mongoose;
     });
   }
